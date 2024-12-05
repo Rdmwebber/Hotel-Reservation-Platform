@@ -36,7 +36,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(ResourceConstants.ROOM_RESERVATION_V1)
-@CrossOrigin
+@CrossOrigin("http://localhost:4200")
 public class ReservationResource {
 
     @Autowired
