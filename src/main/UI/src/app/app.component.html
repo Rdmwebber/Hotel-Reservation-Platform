@@ -15,8 +15,8 @@
     <nav id="nav" style="position: relative; top: 0; left: 0; bottom: auto; right: auto; width: 100%;">
       <div class="navbar">
 
-        <div class="brand"><a href="/#welcome">Bandon <span>BROotel</span></a></div>
-        <ul>
+        <div class="brand"><a href="/#welcome">Landon <span>Hotel</span></a></div>
+        <ul *ngIf="messages">
           <li *ngFor="let message of messages">
             {{message}}
           </li>
@@ -81,7 +81,10 @@
                 </td>
                 <td>
                   <strong>Room #: {{room.roomNumber}}</strong><br/>
-                  <strong>Price: ${{room.price}}</strong>
+                  <strong>Price: {{ room.price | currency: 'USD' : 'symbol'}}</strong><br/>
+                  <strong>Price: {{ room.priceEUR | currency: 'EUR' : 'symbol'}}</strong><br/>
+                  <strong>Price: {{ room.priceCAD | currency: 'CAD' : 'symbol'}}</strong>
+
                 </td>
                 <td>
                   <button type="submit" class="btn btn-primary" (click)="reserveRoom(room.id)">Reserve</button>

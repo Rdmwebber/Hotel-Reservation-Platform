@@ -1,8 +1,7 @@
 package edu.wgu.d387_sample_code.rest;
 
 
-import edu.wgu.d387_sample_code.util.MultiLanguageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.wgu.d387_sample_code.util.MultiLanguageServiceImpl;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +17,7 @@ public class WelcomeController {
 
    @RequestMapping("/welcome")
    public List<String > getWelcome() {
-       MultiLanguageService languageService = new MultiLanguageService();
+       MultiLanguageServiceImpl languageService = new MultiLanguageServiceImpl();
        return languageService.getThreads();
    }
 

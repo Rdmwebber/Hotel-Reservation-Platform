@@ -53,7 +53,17 @@ export class AppComponent implements OnInit{
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
       this.getAll().subscribe(
 
-        rooms => {console.log(Object.values(rooms)[0]);this.rooms=<Room[]>Object.values(rooms)[0]; }
+        rooms => {
+          console.log("LOGGING", Object.values(rooms)[0]);
+          this.rooms=<Room[]>Object.values(rooms)[0];
+
+           this.rooms.forEach(room=> {
+             const cadString = Number(room.price) * 1.4;
+             room.priceCAD = cadString.toString();
+             const eurString = Number(room.price) * .9;
+             room.priceEUR = eurString.toString();
+           }  )
+        }
 
 
       );
@@ -109,6 +119,8 @@ export interface Room{
   roomNumber:string;
   price:string;
   links:string;
+  priceCAD:string;
+  priceEUR:string;
 
 }
 export class ReserveRoomRequest {
