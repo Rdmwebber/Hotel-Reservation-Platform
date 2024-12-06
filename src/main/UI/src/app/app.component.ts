@@ -28,6 +28,7 @@ export class AppComponent implements OnInit{
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
   messages: string[] = [];
+  times: string[] = [];
 
     ngOnInit(){
       this.roomsearch= new FormGroup({
@@ -48,13 +49,16 @@ export class AppComponent implements OnInit{
 
     //subscribe to welcome messages
       this.getWelcome().subscribe(data => this.messages = data)
+
+      //subscribe to timeZones
+      this.getTime().subscribe(data => this.times = data)
   }
 
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
       this.getAll().subscribe(
 
         rooms => {
-          console.log("LOGGING", Object.values(rooms)[0]);
+          console.log( Object.values(rooms)[0]);
           this.rooms=<Room[]>Object.values(rooms)[0];
 
            this.rooms.forEach(room=> {
@@ -100,6 +104,10 @@ export class AppComponent implements OnInit{
     getWelcome(): Observable<any> {
 
        return this.httpClient.get(this.baseURL + '/welcome', {responseType: 'json'});
+    }
+    getTime(): Observable<any> {
+
+       return this.httpClient.get(this.baseURL + '/timeZones', {responseType: 'json'});
     }
 
   }

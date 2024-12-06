@@ -28,6 +28,16 @@
 <main id="wrapper">
   <div class="scene" id="welcome">
     <article class="content">
+      <div>
+        <p>
+          Join us for an online live presentation held at the Landon Hotel on December 06th, 2024 @
+        </p>
+        <ul *ngIf="times">
+          <li *ngFor="let time of times">
+            {{time}}
+          </li>
+        </ul>
+      </div>
 
 
 
